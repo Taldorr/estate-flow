@@ -1,0 +1,29 @@
+{
+  "name": "estate-flow-frontend-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/estate-flow-frontend-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/estate-flow-frontend-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "estate-flow-frontend:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "estate-flow-frontend:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "estate-flow-frontend:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["estate-flow-frontend"]
+}
